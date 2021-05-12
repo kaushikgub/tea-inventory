@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('content')
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/sales') }}">Sales</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
+        </ol>
+    </nav>
     {!! Form::model($sale, ['url' => $sale ? '/sales/' . $sale->id : '/sales/store', 'method' => $sale ? 'PUT' : 'POST', 'files' => true]) !!}
     <div class="row">
         <div class="col-4 form-group">

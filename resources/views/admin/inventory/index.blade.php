@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Inventories</li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col">
             <a href="{{ url('/inventories/create') }}" class="btn btn btn-facebook"><i class="fa fa-plus-circle"></i> Add</a>

@@ -25,7 +25,12 @@
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src="{{ asset('/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
+                <h2 class="font-weight-bolder">
+                    <span style="color: #08c8e9">BEST </span>
+                    <span style="color: #1db33f">B </span>
+                    <span style="color: #08c8e9">Bangladesh</span>
+                </h2>
+{{--                <img src="{{ asset('/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">--}}
             </a>
         </div>
         <div class="navbar-inner">
