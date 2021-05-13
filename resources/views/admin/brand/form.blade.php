@@ -9,11 +9,11 @@
     </nav>
     {!! Form::model($brand, ['url' => $brand ? '/brands/' . $brand->id : '/brands/store', 'method' => $brand ? 'PUT' : 'POST', 'files' => true]) !!}
     <div class="row">
-        <div class="col-6 form-group">
+        <div class="col-md-6 col-sm-12 form-group">
             <label for="">Name</label>
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
-        <div class="col-6 form-group">
+        <div class="col-md-6 col-sm-12 form-group">
             <label for="">Image</label>
             {!! Form::file('image', ['class' => 'form-control']) !!}
         </div>

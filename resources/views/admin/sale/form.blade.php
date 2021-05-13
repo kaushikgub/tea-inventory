@@ -9,15 +9,15 @@
     </nav>
     {!! Form::model($sale, ['url' => $sale ? '/sales/' . $sale->id : '/sales/store', 'method' => $sale ? 'PUT' : 'POST', 'files' => true]) !!}
     <div class="row">
-        <div class="col-4 form-group">
+        <div class="col-md-4 col-sm-12 form-group">
             <label for="">Brand</label>
             {!! Form::select('brand_id', $brands, null, ['placeholder' => 'Pick a Brand', 'class' => 'form-control', 'required']) !!}
         </div>
-        <div class="col-4 form-group">
+        <div class="col-md-4 col-sm-12 form-group">
             <label for="">Quantity</label>
             {!! Form::number('quantity', $sale ? $sale->quantity : '', ['class' => 'form-control', 'required', 'step' => '0.1']) !!}
         </div>
-        <div class="col-4 form-group">
+        <div class="col-md-4 col-sm-12 form-group">
             <label for="">Sale Date</label>
             {!! Form::date('sale_date', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
         </div>
