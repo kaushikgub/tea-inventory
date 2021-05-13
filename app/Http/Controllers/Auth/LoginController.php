@@ -33,4 +33,10 @@ class LoginController extends Controller
         Session::flash('message', 'Something Went Wrong');
         return redirect('/login');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }
