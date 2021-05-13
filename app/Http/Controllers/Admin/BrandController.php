@@ -12,8 +12,9 @@ class BrandController extends Controller
 {
     public function index()
     {
+        $search = null;
         $brands = Brand::query()->latest('id')->paginate(10);
-        return view('admin.brand.index', compact('brands'));
+        return view('admin.brand.index', compact('brands', 'search'));
     }
 
     public function create()
@@ -79,5 +80,18 @@ class BrandController extends Controller
         } catch (\Exception $e) {
             return redirect()->back();
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('query');
+        $brands = Brand::query()
+            ->when($search, function ($query) use ($search){
+                $query->where('name', 'LIKE', '%' . $search . '%');
+                $query->orWhere('address', 'LIKE', '%' . $search . '%');
+            })
+            ->latest('id')
+            ->paginate(10);
+        return view('admin.brand.index', compact('brands', 'search'));
     }
 }

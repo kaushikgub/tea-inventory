@@ -11,8 +11,9 @@ class SaleController extends Controller
 {
     public function index()
     {
+        $search = null;
         $sales = Sale::query()->with('brand')->latest('id')->paginate();
-        return view('admin.sale.index', compact('sales'));
+        return view('admin.sale.index', compact('sales', 'search'));
     }
 
     public function create()
@@ -68,5 +69,25 @@ class SaleController extends Controller
         } catch (\Exception $e) {
             return redirect()->back();
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('query');
+        $sales = Sale::query()
+            ->when($search, function ($query) use ($search){
+                $query->whereHas('brand', function ($query) use ($search){
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                });
+                $query->orWhere('quantity', 'LIKE', '%' . $search . '%');
+                $query->orWhere('sale_date', 'LIKE', '%' . $search . '%');
+                $query->orWhere('comment', 'LIKE', '%' . $search . '%');
+                $query->orWhereHas('user', function ($query) use ($search){
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                });
+            })
+            ->latest('id')
+            ->paginate(10);
+        return view('admin.sale.index', compact('sales', 'search'));
     }
 }

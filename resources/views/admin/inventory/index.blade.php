@@ -10,6 +10,16 @@
         <div class="col">
             <a href="{{ url('/inventories/create') }}" class="btn btn btn-facebook"><i class="fa fa-plus-circle"></i> Add</a>
         </div>
+        <div class="col">
+            <form action="{{ url('inventories/search') }}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="query" placeholder="Search" value="{{ $search }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-facebook" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="row mt-2">
         <div class="col">
