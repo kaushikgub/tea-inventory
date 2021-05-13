@@ -48,7 +48,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/brands') }}">
                             <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Brands</span>
+                            <span class="nav-link-text">Brands & Stock</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -59,7 +59,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/sales') }}">
-                            <i class="ni ni-delivery-fast"></i>
+                            <i class="fa fa-balance-scale"></i>
                             <span class="nav-link-text">Sale</span>
                         </a>
                     </li>
