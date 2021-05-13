@@ -13,7 +13,7 @@
         <div class="col">
             <form action="{{ url('inventories/search') }}" method="get">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="query" placeholder="Search" value="{{ $search }}">
+                    <input type="text" class="form-control" name="query" placeholder="Search" value="{{ $search }}" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-facebook" type="submit"><i class="fa fa-search"></i></button>
                     </div>
