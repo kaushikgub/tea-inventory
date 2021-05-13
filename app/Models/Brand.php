@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Brand extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CascadeSoftDeletes;
 
     protected $table = 'brands';
 
@@ -20,6 +21,8 @@ class Brand extends Model
     protected $appends = [
         'stock'
     ];
+
+    protected $cascadeDeletes = ['inventories', 'sales'];
 
     public function getStockAttribute()
     {
@@ -47,5 +50,14 @@ class Brand extends Model
         self::deleting(function ($model) {
             $model->deleted_by = Auth::id();
         });
+    }
+
+    public function inventories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Inventory::class);
+    }
+    public function sales(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Sale::class);
     }
 }

@@ -59,4 +59,14 @@ class InventoryController extends Controller
             return redirect()->back();
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            Inventory::query()->find($id)->delete();
+            return redirect('/inventories');
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
+    }
 }

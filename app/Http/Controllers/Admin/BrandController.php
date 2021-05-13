@@ -31,7 +31,7 @@ class BrandController extends Controller
         try {
             $data = $request->only('name', 'address');
             $data = $this->imageUpload($request, $data);
-            Brand::create($data);
+            Brand::query()->create($data);
             return redirect('/brands');
         } catch (\Exception $exception){
             return redirect()->back();
@@ -40,7 +40,7 @@ class BrandController extends Controller
 
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id);
+        $brand = Brand::query()->findOrFail($id);
         return view('admin.brand.form', compact('brand'));
     }
 
@@ -53,7 +53,7 @@ class BrandController extends Controller
         try {
             $data = $request->only('name', 'address');
             $data = $this->imageUpload($request, $data);
-            Brand::findOrFail($id)->update($data);
+            Brand::query()->findOrFail($id)->update($data);
             return redirect('/brands');
         } catch (\Exception $exception){
             return redirect()->back();
@@ -69,5 +69,15 @@ class BrandController extends Controller
             $data['image'] = $path;
         }
         return $data;
+    }
+
+    public function destroy($id)
+    {
+        try {
+            Brand::query()->find($id)->delete();
+            return redirect('/brands');
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
     }
 }

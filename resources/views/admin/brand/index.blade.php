@@ -39,7 +39,7 @@
                             <a href="{{ url('brands/' . $brand->id . '/edit') }}" class="btn btn-sm btn-warning">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-sm btn-danger">
+                            <a href="javascript:void(0)" id="delete" data-url="{{ url('brands/' . $brand->id) }}" class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

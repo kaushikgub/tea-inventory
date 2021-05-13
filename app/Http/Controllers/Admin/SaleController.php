@@ -59,4 +59,14 @@ class SaleController extends Controller
             return redirect()->back();
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            Sale::query()->find($id)->delete();
+            return redirect('/sales');
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
+    }
 }

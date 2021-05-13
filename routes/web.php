@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/store', [BrandController::class, 'store']);
         Route::get('{id}/edit', [BrandController::class, 'edit']);
         Route::put('{id}', [BrandController::class, 'update']);
-        Route::get('{id}/delete', [BrandController::class, 'destroy']);
+        Route::delete('{id}', [BrandController::class, 'destroy']);
     });
 
     Route::group(['prefix' => '/inventories'], function (){
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/store', [InventoryController::class, 'store']);
         Route::get('{id}/edit', [InventoryController::class, 'edit']);
         Route::put('{id}', [InventoryController::class, 'update']);
-        Route::get('{id}/delete', [InventoryController::class, 'destroy']);
+        Route::delete('{id}', [InventoryController::class, 'destroy']);
     });
 
     Route::group(['prefix' => '/sales'], function (){
@@ -37,6 +37,6 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/store', [SaleController::class, 'store']);
         Route::get('{id}/edit', [SaleController::class, 'edit']);
         Route::put('{id}', [SaleController::class, 'update']);
-        Route::get('{id}/delete', [SaleController::class, 'destroy']);
+        Route::delete('{id}', [SaleController::class, 'destroy']);
     });
 });

@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href="{{ asset('/assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
+          type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/css/argon.css?v=1.2.0') }}" type="text/css">
 </head>
@@ -30,7 +31,7 @@
                     <span style="color: #1db33f">B </span>
                     <span style="color: #08c8e9">Bangladesh</span>
                 </h2>
-{{--                <img src="{{ asset('/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">--}}
+                {{--                <img src="{{ asset('/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">--}}
             </a>
         </div>
         <div class="navbar-inner">
@@ -83,7 +84,8 @@
                             <input class="form-control" placeholder="Search" type="text">
                         </div>
                     </div>
-                    <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                    <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main"
+                            aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </form>
@@ -91,7 +93,8 @@
                 <ul class="navbar-nav align-items-center  ml-md-auto ">
                     <li class="nav-item d-xl-none">
                         <!-- Sidenav toggler -->
-                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+                             data-target="#sidenav-main">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line"></i>
                                 <i class="sidenav-toggler-line"></i>
@@ -107,7 +110,8 @@
                 </ul>
                 <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
                             <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
                     <img alt="Image placeholder" src="{{ asset('/assets/img/theme/team-1.jpg') }}">
@@ -118,26 +122,26 @@
                             </div>
                         </a>
                         <div class="dropdown-menu  dropdown-menu-right ">
-{{--                            <div class="dropdown-header noti-title">--}}
-{{--                                <h6 class="text-overflow m-0">Welcome!</h6>--}}
-{{--                            </div>--}}
-{{--                            <a href="#!" class="dropdown-item">--}}
-{{--                                <i class="ni ni-single-02"></i>--}}
-{{--                                <span>My profile</span>--}}
-{{--                            </a>--}}
-{{--                            <a href="#!" class="dropdown-item">--}}
-{{--                                <i class="ni ni-settings-gear-65"></i>--}}
-{{--                                <span>Settings</span>--}}
-{{--                            </a>--}}
-{{--                            <a href="#!" class="dropdown-item">--}}
-{{--                                <i class="ni ni-calendar-grid-58"></i>--}}
-{{--                                <span>Activity</span>--}}
-{{--                            </a>--}}
-{{--                            <a href="#!" class="dropdown-item">--}}
-{{--                                <i class="ni ni-support-16"></i>--}}
-{{--                                <span>Support</span>--}}
-{{--                            </a>--}}
-{{--                            <div class="dropdown-divider"></div>--}}
+                            {{--                            <div class="dropdown-header noti-title">--}}
+                            {{--                                <h6 class="text-overflow m-0">Welcome!</h6>--}}
+                            {{--                            </div>--}}
+                            {{--                            <a href="#!" class="dropdown-item">--}}
+                            {{--                                <i class="ni ni-single-02"></i>--}}
+                            {{--                                <span>My profile</span>--}}
+                            {{--                            </a>--}}
+                            {{--                            <a href="#!" class="dropdown-item">--}}
+                            {{--                                <i class="ni ni-settings-gear-65"></i>--}}
+                            {{--                                <span>Settings</span>--}}
+                            {{--                            </a>--}}
+                            {{--                            <a href="#!" class="dropdown-item">--}}
+                            {{--                                <i class="ni ni-calendar-grid-58"></i>--}}
+                            {{--                                <span>Activity</span>--}}
+                            {{--                            </a>--}}
+                            {{--                            <a href="#!" class="dropdown-item">--}}
+                            {{--                                <i class="ni ni-support-16"></i>--}}
+                            {{--                                <span>Support</span>--}}
+                            {{--                            </a>--}}
+                            {{--                            <div class="dropdown-divider"></div>--}}
                             <a href="{{ url('/logout') }}" class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
                                 <span>Logout</span>
@@ -151,6 +155,30 @@
     <section class="container-fluid mt-4">
         @yield('content')
     </section>
+    <div class="modal fade" id="confirmPopup" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this item?
+                </div>
+                <div class="modal-footer">
+                    <form id="action_url" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->
@@ -161,6 +189,14 @@
 <script src="{{ asset('/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
 <!-- Argon JS -->
 <script src="{{ asset('/assets/js/argon.js?v=1.2.0') }}"></script>
+<script>
+    $(document).on('click', '#delete', function () {
+        const URL = $(this).data('url');
+        console.log(URL);
+        $('#action_url').prop('action', URL);
+        $('#confirmPopup').modal('show');
+    })
+</script>
 </body>
 
 </html>
