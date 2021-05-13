@@ -7,7 +7,6 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use PDF;
 
 class BrandController extends Controller
 {
@@ -94,13 +93,5 @@ class BrandController extends Controller
             ->latest('id')
             ->paginate(10);
         return view('admin.brand.index', compact('brands', 'search'));
-    }
-
-    public function export()
-    {
-        $brands = Brand::query()->latest()->get();
-        $pdf = PDF::loadView('admin.brand.report');
-        $pdf->setPaper('A4', 'portrait');
-        return $pdf->stream('brands.pdf');
     }
 }
