@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::put('/{id}', [BrandController::class, 'update']);
         Route::delete('/{id}', [BrandController::class, 'destroy']);
         Route::get('/search', [BrandController::class, 'search']);
+        Route::get('/export', [BrandController::class, 'export']);
     });
 
     Route::group(['prefix' => '/inventories'], function (){

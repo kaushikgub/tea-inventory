@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col">
             <a href="{{ url('/brands/create') }}" class="btn btn btn-facebook"><i class="fa fa-plus-circle"></i> Add</a>
+{{--            <a href="{{ url('/brands/export') }}" class="btn btn-success"><i class="fas fa-file-export"></i> Export</a>--}}
         </div>
         <div class="col">
             <form action="{{ url('brands/search') }}" method="get">
